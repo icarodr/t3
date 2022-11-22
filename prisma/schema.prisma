@@ -26,6 +26,13 @@ model Book {
   author String
 }
 
+model Car {
+  id String @id @default(cuid())
+  name String
+  brand String
+  price Float
+}
+
 // Necessary for Next auth
 model Account {
   id                String  @id @default(cuid())
