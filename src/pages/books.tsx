@@ -19,7 +19,7 @@ const BookPage: NextPage = () => {
 
   return (
     <div className="px-12 pt-9">
-      <h1 className="text-2xl font-bold">Books</h1>
+      <h1 className="text-2xl font-bold">Books: </h1>
       {JSON.stringify(response.data, null, 2)}
 
       <form onSubmit={handleSubmit} className="mt-2 flex flex-col gap-3">

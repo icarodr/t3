@@ -1,6 +1,7 @@
 import { z } from "zod";
-
 import { router, publicProcedure } from "../trpc";
+
+//No caso da lista(JSON)
 
 // type Book = {
 //   name: string;
@@ -34,11 +35,6 @@ export const bookRouter = router({
         },
       });
 
-      // books.push({
-      //   name: input.bookName,
-      //   author: input.bookAuthor,
-      // });
-
       return books;
     }),
   getAll: publicProcedure.query(async ({ ctx }) => {
@@ -50,3 +46,4 @@ export const bookRouter = router({
     return books[0];
   }),
 });
+
