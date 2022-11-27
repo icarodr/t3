@@ -33,6 +33,12 @@ model Car {
   price Float
 }
 
+model Product {
+  id String @id @default(cuid())
+  name String
+  price Float
+}
+
 // Necessary for Next auth
 model Account {
   id                String  @id @default(cuid())
