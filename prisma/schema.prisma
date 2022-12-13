@@ -36,6 +36,8 @@ model Car {
 model Product {
   id String @id @default(cuid())
   name String
+  brand String
+  desc String
   price Float
 }
 

@@ -45,7 +45,7 @@ export const carRouter = router({
     }),
     getAll: publicProcedure.query(async ({ ctx }) => {
         const cars = await ctx.prisma.car.findMany();
-        return cars[0]
+        return cars[0];
     }),
     one: publicProcedure.query(async ({ ctx }) => {
         const cars = await ctx.prisma.car.findMany();

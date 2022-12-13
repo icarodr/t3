@@ -1,0 +1,3 @@
+1 - criar tabela marcas 1 : N
+2 - fazer o cliente escolher entre essas marcas (sugestão de complete)
+3 - se não tiver a marca (essa marca não existe deseja cria-la)
