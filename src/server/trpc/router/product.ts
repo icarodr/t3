@@ -6,6 +6,7 @@ export const productRouter = router({
     //primeira procedure(publicProcedure) => para realizar as ações
     create: publicProcedure
     .input(
+        //identificar quais campos serão inseridos na tabela do banco de dados e os tipos
         z.object({
            prodName: z.string().min(3).max(50),
            prodBrand: z.string().min(3).max(50),
@@ -13,6 +14,7 @@ export const productRouter = router({
            prodPrice: z.number()
         })
     )
+    //basicamente serve pra criar ou alterar os campos existentes
     .mutation(async ({ ctx,input }) =>{
         const products = await ctx.prisma.product.create({
             data: {
@@ -23,6 +25,8 @@ export const productRouter = router({
             }
         });
     }),
+    
+    //as duas procedures abaixo são responsáveis pelas ações que você pode fazer nos campos
     getAll: publicProcedure.query(async ({ ctx }) => {
         const products = await ctx.prisma.product.findMany();
         return products;
