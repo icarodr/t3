@@ -10,6 +10,9 @@ const Home: NextPage = () => {
   const { mutate } = trpc.product.create.useMutation({
     onSuccess: (response) => alert(JSON.stringify(response)),
   });
+  const { mutate: deleteProd } = trpc.product.deleteOne.useMutation({
+    onSuccess: (response) => alert(JSON.stringify(response))
+  });
 
   //Passo 2
   const [prodName, setProductName] = useState("");
@@ -44,7 +47,7 @@ const Home: NextPage = () => {
           <button type="submit" className="text-center border-2 border-gray-400 rounded-2xl bg-green-500 hover:bg-green-200 w-fit ml-10">
             <h1 className="m-6">Adicionar</h1>
           </button>
-          <button type="submit" className="text-center border-2 border-gray-400 rounded-2xl bg-red-500 hover:bg-red-200 w-fit ml-2">
+          <button type="submit" onClick={() => deleteProd({ prodId: "clbr3yzzv0002tuwgzjxoe59l" })} className="text-center border-2 border-gray-400 rounded-2xl bg-red-500 hover:bg-red-200 w-fit ml-2">
             <h1 className="m-6">Deletar</h1>
           </button>
         </div>

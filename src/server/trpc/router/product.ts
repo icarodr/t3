@@ -31,8 +31,22 @@ export const productRouter = router({
         const products = await ctx.prisma.product.findMany();
         return products;
     }),
+    
     getOne: publicProcedure.query(async ({ ctx }) => {
         const products = await ctx.prisma.product.findMany();
         return products[0];
-    })
+    }),
+
+    deleteOne: publicProcedure
+        .input(z.object({
+            prodId: z.string()
+        }))
+        .mutation(async ({ctx, input}) =>{
+            const products = await ctx.prisma.product.delete({
+                where: {
+                    id: input.prodId
+                }
+            })
+            return products;
+        }),
 });
