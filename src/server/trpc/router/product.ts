@@ -45,6 +45,7 @@ export const productRouter = router({
             const products = await ctx.prisma.product.delete({
                 where: {
                     id: input.prodId
+                    
                 }
             })
             return products;

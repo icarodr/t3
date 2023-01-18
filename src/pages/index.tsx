@@ -57,7 +57,6 @@ const Home: NextPage = () => {
         <div className="itens border border-black rounded-xl mr-40 ml-40 bg-gray-500">
           <div className="m-10 text-4xl text-gray-600">
             <h1 className="text-white">Itens da lista</h1>
-            {/* {JSON.stringify(response.data, null, 2)} */}
           </div>
           <div className="card-item border w-5/6 rounded-lg m-10 bg-white">
             <div className="m-2">
@@ -66,6 +65,9 @@ const Home: NextPage = () => {
               <h3>Descrição: {prodDesc}</h3>
               <h3>Preço: {prodPrice}</h3>
             </div>
+          </div>
+          <div className="border w-5/6 rounded-lg m-10 bg-gray-400">
+          {JSON.stringify(response.data)}
           </div>
         </div>
       </form>
