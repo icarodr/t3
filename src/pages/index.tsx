@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { trpc } from "../utils/trpc";
 import { useState, FormEvent } from "react";
+// import { Filter } from "@trpc/server";
 
 const Home: NextPage = () => {
 
@@ -27,6 +28,14 @@ const Home: NextPage = () => {
     mutate({ prodName, prodBrand, prodDesc, prodPrice: Number(prodPrice) });
   };
 
+  //sistema de filtragem
+  const [busca, setBusca] = useState("");
+  console.log(busca);
+
+  const filtrado = response.data?.filter((response) => {
+    return JSON.stringify(response.name)
+  });
+
   return (
     <>
       <Head>
@@ -44,19 +53,21 @@ const Home: NextPage = () => {
           <input type="text" value={prodDesc} onChange={(event) => setProductDesc(event.target.value)} placeholder="Descrição: " className="text-lg text-gray-400 border-2 border-gray-400 rounded-lg hover:bg-gray-200 ml-8 w-80" />
           <input type="text" value={prodPrice} onChange={(event) => setProductPrice(event.target.value)} placeholder="Preço: " className="text-lg text-gray-400 border-2 border-gray-400 rounded-lg hover:bg-gray-200 ml-8 w-80" />
 
-          <button type="submit" className="text-center border-2 border-gray-400 rounded-2xl bg-green-500 hover:bg-green-200 w-fit ml-10">
+          <button type="submit" className="text-center border-2 border-gray-400 rounded-2xl bg-blue-500 hover:bg-blue-200 w-fit ml-10">
             <h1 className="m-6">Adicionar</h1>
           </button>
-          <button type="submit" onClick={() => deleteProd({ prodId: "clbr3yzzv0002tuwgzjxoe59l" })} className="text-center border-2 border-gray-400 rounded-2xl bg-red-500 hover:bg-red-200 w-fit ml-2">
+          <button type="button" onClick={() => deleteProd({ prodId: "cld4iq7qd0004a070pipf8hlh" })} className="text-center border-2 border-gray-400 rounded-2xl bg-red-500 hover:bg-red-200 w-fit ml-2">
             <h1 className="m-6">Deletar</h1>
           </button>
         </div>
-
         <br />
-
         <div className="itens border border-black rounded-xl mr-40 ml-40 bg-gray-500">
           <div className="m-10 text-4xl text-gray-600">
-            <h1 className="text-white">Itens da lista</h1>
+            <h1 className="text-white mb-10">Itens da lista</h1>
+            <div className="flex">
+            <input type="text" className="rounded mr-2 text-lg" value={busca} onChange={(event) => setBusca(event.target.value)}/>
+            <button type="button" className="text-center text-lg border-gray-400 rounded bg-blue-500 hover:bg-blue-400 h-10">Pesquisar</button>
+            </div>
           </div>
           <div className="card-item border w-5/6 rounded-lg m-10 bg-white">
             <div className="m-2">
@@ -67,7 +78,11 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div className="border w-5/6 rounded-lg m-10 bg-gray-400">
-          {JSON.stringify(response.data)}
+            <div className="m-8">
+            {filtrado?.map((response) => (
+             <li>{response.name}</li> 
+            ))}
+            </div>
           </div>
         </div>
       </form>
