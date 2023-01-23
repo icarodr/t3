@@ -50,4 +50,18 @@ export const productRouter = router({
             })
             return products;
         }),
+
+    // search: publicProcedure
+    // .mutation(
+    //     z.object({
+    //         prodId: z.string()
+    //     }))
+
+    searchOne: publicProcedure.input(
+        z.object({
+            prodId: z.string()
+        }))
+        .mutation(async({ctx, input}) => {
+            
+        })
 });

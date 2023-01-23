@@ -15,6 +15,7 @@ const Home: NextPage = () => {
     onSuccess: (response) => alert(JSON.stringify(response))
   });
 
+
   //Passo 2
   const [prodName, setProductName] = useState("");
   const [prodBrand, setProductBrand] = useState("");
@@ -56,7 +57,7 @@ const Home: NextPage = () => {
           <button type="submit" className="text-center border-2 border-gray-400 rounded-2xl bg-blue-500 hover:bg-blue-200 w-fit ml-10">
             <h1 className="m-6">Adicionar</h1>
           </button>
-          <button type="button" onClick={() => deleteProd({ prodId: "cld4iq7qd0004a070pipf8hlh" })} className="text-center border-2 border-gray-400 rounded-2xl bg-red-500 hover:bg-red-200 w-fit ml-2">
+          <button type="button" onClick={() => deleteProd({ prodId: "cld8u2cb300068jvt0i7we69z" })} className="text-center border-2 border-gray-400 rounded-2xl bg-red-500 hover:bg-red-200 w-fit ml-2">
             <h1 className="m-6">Deletar</h1>
           </button>
         </div>
@@ -66,7 +67,7 @@ const Home: NextPage = () => {
             <h1 className="text-white mb-10">Itens da lista</h1>
             <div className="flex">
             <input type="text" className="rounded mr-2 text-lg" value={busca} onChange={(event) => setBusca(event.target.value)}/>
-            <button type="button" className="text-center text-lg border-gray-400 rounded bg-blue-500 hover:bg-blue-400 h-10">Pesquisar</button>
+            <button type="button" className="text-center text-lg border-gray-400 rounded bg-blue-500 hover:bg-blue-400 h-10 border">Pesquisar</button>
             </div>
           </div>
           <div className="card-item border w-5/6 rounded-lg m-10 bg-white">
@@ -80,7 +81,7 @@ const Home: NextPage = () => {
           <div className="border w-5/6 rounded-lg m-10 bg-gray-400">
             <div className="m-8">
             {filtrado?.map((response) => (
-             <li>{response.name}</li> 
+             <li className="m-2">{response.name}<button type="button" className="bg-gray-300 border border-black rounded-md">selecionar</button></li> 
             ))}
             </div>
           </div>
