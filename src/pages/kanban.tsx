@@ -1,42 +1,40 @@
 import { NextPage } from "next";
-import { FormEvent, useState, useEffect } from "react";
+import React, { useState } from "react";
+import { number } from "zod";
 import { trpc } from "../utils/trpc";
 import { Card } from "./components/Card";
 
 const KanbanPage: NextPage = () => {
-    
-    const AddCard = () =>{
-        console.log("Card Adicionado")
-        return (
-            <Card/>
-        )
-    }
 
-    const DelCard = () => {
-        console.log("Card Deletado")
-    }
+  const [cards, setCards] = useState([{}]);
+
+  const AddCard = () => {
+    console.log("Card Adicionado")
+    setCards([
+      ...cards,
+      {
+        name: 1
+      }
+    ])
+  }
 
   return (
     <>
-      <div className="px-12 pt-9">
-        <h1 className="text-2xl font-bold">Kanban</h1>
+      <div className="px-12 pt-9 flex-none">
+        <h1 className="text-3xl font-bold">Kanban</h1>
+        <h1 className="text-2xl font-bold text-red-500">To Do:</h1>
         {/* {JSON.stringify(response.data, null, 2)} */}
         <button
-          className="ml-10 rounded bg-red-500 px-5 py-3 text-white hover:bg-red-400"
+          className="rounded bg-blue-500 px-5 py-3 text-white hover:bg-blue-400"
           type="submit"
           onClick={AddCard}
         >
           Add a Card
         </button>
-        <button
-          className="rounded bg-blue-500 px-5 py-3 text-white hover:bg-blue-400"
-          type="submit"
-          onClick={DelCard}
-        >
-          Delete a card
-        </button>
       </div>
-      {/* <Card /> */}
+      <div>{cards.map((item, index) => (
+        <div key={index}><Card /></div>
+      ))}</div>
     </>
   );
 };
