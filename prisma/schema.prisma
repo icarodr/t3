@@ -41,6 +41,14 @@ model Product {
   price Float
 }
 
+model CardKanban {
+  id String @id @default(cuid())
+  title String
+  priority String
+  validity String
+  integrants String
+}
+
 // Necessary for Next auth
 model Account {
   id                String  @id @default(cuid())
