@@ -18,14 +18,14 @@ export const todoRouter = createTRPCRouter({
 
     return [
       {
-        id: "fake",
-        text: "fake text",
+        id: "Teste",
+        text: "Algo aqui",
         done: false,
       },
 
       {
-        id: "fake2",
-        text: "fake text2",
+        id: "Teste2",
+        text: "Algo aqui2",
         done: true,
       },
     ];

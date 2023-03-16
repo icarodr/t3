@@ -7,7 +7,7 @@
 - [x] Create TRPC router for TODOs
 
 ### Frontend
-- [] Login
+- [x] Login
 - [] List Todos
 - [] Create Todos
 - [] Toggle Todo
