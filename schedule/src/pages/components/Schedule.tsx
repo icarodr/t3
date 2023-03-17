@@ -6,7 +6,8 @@ const Schedule = () => {
         
 <div className="flex items-center justify-center w-full min-h-screen">
           <div className="text-lg border shadow-lg rounded-lg flex space-x-4">  
-          <h1 className="text-white m-4">Data</h1>   
+          <h1 className="text-white m-4">Mês</h1>
+          <p>{}</p>  
             <div className='grid grid-cols-7 text-xs text-center text-black font-bold bg-white'>
               <span className='flex items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-200'><a href="">Seg</a></span>
               <span className='flex items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-200'><a href="">Ter</a></span>
@@ -52,6 +53,11 @@ const Schedule = () => {
               <span>30</span>
               <span>31</span>
 
+            </div>
+
+            <div className="text-white">
+              <h1>Detalhes</h1>
+              <p>{}</p>
             </div>
           </div>
         </div>
