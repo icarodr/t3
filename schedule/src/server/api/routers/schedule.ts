@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { protectedProcedure, createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { TRPCError } from "@trpc/server";
 
 
@@ -19,7 +19,7 @@ export const scheduleRouter = createTRPCRouter({
             date: input.date
           },
         });
-        return createCommitment;
+        return { createCommitment };
 
       } catch (error) {
         throw new TRPCError({
@@ -33,8 +33,8 @@ export const scheduleRouter = createTRPCRouter({
   updateCommitment: publicProcedure
     .input(
       z.object({
-        desc: z.string(),
-        date: z.date(),
+        desc: z.string().optional(),
+        date: z.date().optional(),
         commitId: z.string()
       })
     ).mutation(async ({ input, ctx }) => {
@@ -49,7 +49,7 @@ export const scheduleRouter = createTRPCRouter({
           }
         });
 
-        return updateCommitment;
+        return { updateCommitment };
 
       } catch (error) {
         throw new TRPCError({
@@ -72,7 +72,7 @@ export const scheduleRouter = createTRPCRouter({
             id: input.commitId
           },
         });
-        return deleteCommitment;
+        return { deleteCommitment };
 
       } catch (error) {
         throw new TRPCError({
