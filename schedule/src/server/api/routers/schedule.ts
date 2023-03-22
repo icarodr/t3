@@ -5,6 +5,22 @@ import { TRPCError } from "@trpc/server";
 
 export const scheduleRouter = createTRPCRouter({
   //tarefas de agenda (criar compromissos, deletar etc..)
+
+  getAllCommits: publicProcedure.query(async ({ ctx }) => {
+    try {
+      const allCommits = await ctx.prisma.commitment.findMany();
+      return { allCommits }
+      
+    } catch (error) {
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        cause: error,
+        message: "Não foi possível trazer todos os Agendamentos!"
+      });
+    }
+  }),
+  
+
   createCommitment: publicProcedure
     .input(
       z.object({
@@ -82,4 +98,4 @@ export const scheduleRouter = createTRPCRouter({
         });
       }
     }),
-})
+});
