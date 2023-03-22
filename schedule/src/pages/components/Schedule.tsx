@@ -1,7 +1,13 @@
 import { useState, FormEvent } from "react";
 import { NextPage } from "next";
+import { api } from "~/utils/api";
+
 
 const Schedule: NextPage = () => {
+
+  const [ data, setData ] = useState("");
+
+
   return (
     <div className="flex min-h-screen w-full items-center justify-center">
       <div className="flex space-x-4 rounded-lg border text-lg shadow-lg">
@@ -115,6 +121,8 @@ const Schedule: NextPage = () => {
           <input
             type="text"
             className="rounded-md border border-black text-black"
+            placeholder="Descrição:"
+            onChange={(event) => setData(event.target.value)}
           />
           <button
             className="rounded-md border-none bg-blue-400 text-white"
@@ -122,8 +130,10 @@ const Schedule: NextPage = () => {
           >
             Submit
           </button>
+          <div className="items-center justify-center border border-white rounded-lg m-2">
+          <p className="text-white m-2">{data}</p>
+          </div>
         </div>
-        <p>{}</p>
       </div>
     </div>
   );
