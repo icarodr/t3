@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 const Calendar = () => {
    
   const response = api.schedule.getAllCommits.useQuery();
-  const { mutate } = api.schedule.createCommitment.useMutation({
+  const mutation = api.schedule.createCommitment.useMutation({
     onSuccess: (response: any) => alert(JSON.stringify(response)),
   });
 
@@ -14,7 +14,7 @@ const Calendar = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-//    mutate({ descCommit, dateCommit });
+   mutate({ descCommit, dateCommit });
   };
 
   return (
@@ -70,3 +70,7 @@ const Calendar = () => {
 };
 
 export default Calendar;
+function mutate(arg0: { descCommit: string; dateCommit: string; }) {
+  throw new Error("Function not implemented.");
+}
+
