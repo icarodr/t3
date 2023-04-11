@@ -15,7 +15,7 @@ const Schedule: NextPage = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    mutate({ descCommit, dateCommit });
+    // mutate({ descCommit, dateCommit });
   };
 
   return (

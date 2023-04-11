@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { protectedProcedure, createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { TRPCError } from "@trpc/server";
 
 
