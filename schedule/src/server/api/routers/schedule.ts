@@ -25,14 +25,18 @@ export const scheduleRouter = createTRPCRouter({
     .input(
       z.object({
         desc: z.string(),
-        date: z.date()
+        day: z.string(),
+        mounth: z.string(),
+        year: z.string()
       })
     ).mutation(async ({ input, ctx }) => {
       try {
         const createCommitment = await ctx.prisma.commitment.create({
           data: {
             desc: input.desc,
-            date: input.date
+            day: input.day,
+            mounth: input.mounth,
+            year: input.year
           },
         });
         return { createCommitment };
@@ -49,8 +53,10 @@ export const scheduleRouter = createTRPCRouter({
   updateCommitment: publicProcedure
     .input(
       z.object({
-        desc: z.string().optional(),
-        date: z.date().optional(),
+        desc: z.string(),
+        day: z.string(),
+        mounth: z.string(),
+        year: z.string(),
         commitId: z.string()
       })
     ).mutation(async ({ input, ctx }) => {
@@ -61,7 +67,9 @@ export const scheduleRouter = createTRPCRouter({
           },
           data: {
             desc: input.desc,
-            date: input.date,
+            day: input.day,
+            mounth: input.mounth,
+            year: input.year
           }
         });
 

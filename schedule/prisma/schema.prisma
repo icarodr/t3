@@ -69,5 +69,7 @@ model VerificationToken {
 model Commitment {
     id String @id @default(cuid())
     desc String?
-    date DateTime
+    day String
+    mounth String
+    year String
 }
