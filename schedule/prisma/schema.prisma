@@ -68,6 +68,7 @@ model VerificationToken {
 //Schedule model
 model Commitment {
     id String @id @default(cuid())
+    title String
     desc String?
     day String
     mounth String

@@ -24,6 +24,7 @@ export const scheduleRouter = createTRPCRouter({
   createCommitment: publicProcedure
     .input(
       z.object({
+        title: z.string(),
         desc: z.string(),
         day: z.string(),
         mounth: z.string(),
@@ -36,7 +37,8 @@ export const scheduleRouter = createTRPCRouter({
             desc: input.desc,
             day: input.day,
             mounth: input.mounth,
-            year: input.year
+            year: input.year,
+            title: input.title
           },
         });
         return { createCommitment };
@@ -57,6 +59,7 @@ export const scheduleRouter = createTRPCRouter({
         day: z.string(),
         mounth: z.string(),
         year: z.string(),
+        title: z.string(),
         commitId: z.string()
       })
     ).mutation(async ({ input, ctx }) => {
@@ -69,7 +72,8 @@ export const scheduleRouter = createTRPCRouter({
             desc: input.desc,
             day: input.day,
             mounth: input.mounth,
-            year: input.year
+            year: input.year,
+            title: input.title
           }
         });
 

@@ -1,11 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Schedule from "./components/Schedule";
-import NewCalendar from "./components/Calendar";
 import Calendar from "./components/PlannerCalendar";
-
+import Modal from "./components/ModalScheduler";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
