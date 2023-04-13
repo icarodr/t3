@@ -2,7 +2,7 @@ import { api } from "~/utils/api";
 import { FormEvent, useState } from "react";
 
 const Calendar = () => {
-  // const response = api.schedule.getAllCommits.useQuery();
+  const response = api.schedule.getAllCommits.useQuery();
   const mutation = api.schedule.createCommitment.useMutation({
     onSuccess: (response: any) => alert("Salvo no Banco!"),
   });
@@ -42,7 +42,8 @@ const Calendar = () => {
               onClick={() => setShowModal(true)}
         >
           SEG <br />
-          02
+          02 <br />
+          {titleCommit}
         </div>
         <div className="flex justify-center border hover:bg-slate-100"
               onClick={() => setShowModal(true)}
@@ -141,6 +142,14 @@ const Calendar = () => {
 
                 <div className="p-6">
                   <form onSubmit={handleSubmit} className="space-x-4 space-y-4 ">
+
+                    <input
+                      className="h-10 rounded-md border"
+                      placeholder="Título:"
+                      type="text"
+                      onChange={(e) => setTitle(e.target.value)}
+                    />
+
                     <input
                       className="h-10 rounded-md border"
                       placeholder="Dia:"
@@ -195,6 +204,6 @@ const Calendar = () => {
 };
 
 export default Calendar;
-function mutate(arg0: { descCommit: string; dateCommit: string }) {
-  throw new Error("Function not implemented.");
-}
+// function mutate(arg0: { descCommit: string; dateCommit: string }) {
+//   throw new Error("Function not implemented.");
+// }
