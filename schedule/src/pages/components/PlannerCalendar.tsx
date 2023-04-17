@@ -2,16 +2,15 @@ import { api } from "~/utils/api";
 import { FormEvent, useState } from "react";
 
 const Calendar = () => {
-  const response = api.schedule.getAllCommits.useQuery();
+  // const response = api.schedule.getAllCommits.useQuery();
   const mutation = api.schedule.createCommitment.useMutation({
     onSuccess: (response: any) => alert("Salvo no Banco!"),
+    onError: (response: any) => alert("Error"),
   });
 
   const [descCommit, setDesc] = useState("");
-  const [dayCommit, setDay] = useState("");
-  const [mounthCommit, setMounth] = useState("");
-  const [yearCommit, setYear] = useState("");
   const [ titleCommit, setTitle ] = useState("");
+  
   //Modal
   const [showModal, setShowModal] = useState(false);
 
@@ -22,9 +21,6 @@ const Calendar = () => {
 
     mutation.mutate({
       desc: descCommit,
-      day: dayCommit,
-      mounth: mounthCommit,
-      year: yearCommit,
       title: titleCommit,
     });
   };
@@ -43,7 +39,6 @@ const Calendar = () => {
         >
           SEG <br />
           02 <br />
-          {titleCommit}
         </div>
         <div className="flex justify-center border hover:bg-slate-100"
               onClick={() => setShowModal(true)}
@@ -129,14 +124,11 @@ const Calendar = () => {
               <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between rounded-t border-b border-solid border-slate-200 p-5">
-                  <h3 className="text-3xl font-semibold">Agendar</h3>
+                  <h3 className="text-3xl font-semibold">{titleCommit}</h3>
                   <button
                     className="float-right ml-auto border-0 bg-transparent p-1 text-3xl font-semibold leading-none text-black opacity-5 outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className="block h-6 w-6 bg-transparent text-2xl text-black opacity-5 outline-none focus:outline-none">
-                      ×
-                    </span>
                   </button>
                 </div>
 
@@ -148,25 +140,6 @@ const Calendar = () => {
                       placeholder="Título:"
                       type="text"
                       onChange={(e) => setTitle(e.target.value)}
-                    />
-
-                    <input
-                      className="h-10 rounded-md border"
-                      placeholder="Dia:"
-                      type="text"
-                      onChange={(e) => setDay(e.target.value)}
-                    />
-                    <input
-                      className="h-10 rounded-md border"
-                      placeholder="Mês:"
-                      type="text"
-                      onChange={(e) => setMounth(e.target.value)}
-                    />
-                    <input
-                      className="h-10 rounded-md border"
-                      placeholder="Ano:"
-                      type="text"
-                      onChange={(e) => setYear(e.target.value)}
                     />
                     <input
                       className="h-28 rounded-md border"

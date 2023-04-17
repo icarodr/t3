@@ -70,7 +70,4 @@ model Commitment {
     id String @id @default(cuid())
     title String
     desc String?
-    day String
-    mounth String
-    year String
 }
